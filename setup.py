@@ -1,5 +1,10 @@
-from setuptools import setup
+try:
+    import CaboCha
+except:
+    import pip
+    pip.main(["install","cabocha-python/"])
 
+from setuptools import setup
 setup(
     name='asapy',  # Required
     version='1.0.0',  # Required
