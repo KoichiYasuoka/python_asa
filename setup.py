@@ -1,8 +1,13 @@
 try:
     import CaboCha
 except:
-    import pip
-    pip.main(["install","cabocha-python/"])
+    try:
+        import subprocess
+        v=subprocess.check_output(["cabocha-config","--version"])
+        import pip
+        pip.main(["install","cabocha-python/"])
+    except:
+        pass
 
 from setuptools import setup
 setup(
