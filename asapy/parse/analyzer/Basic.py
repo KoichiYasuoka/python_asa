@@ -99,7 +99,7 @@ class Basic():
                 else:
                     head = morph.base + "だ"
         elif chunk.ctype == "elem":
-            head = "".join([morph.base for morph in chunk.morphs if re.search(r"名詞|副詞", morph.pos)])
+            head = "".join([morph.surface if morph.base == "" or morph.base == "*" else morph.base for morph in chunk.morphs if re.search(r"名詞|副詞", morph.pos)])
         return head
 
     # 文節内の名詞につく格助詞の取得
