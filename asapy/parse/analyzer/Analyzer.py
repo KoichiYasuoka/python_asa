@@ -14,7 +14,7 @@ class Analyzer():
             import spacy
             from ginza.command_line import analyze_cabocha
             self.analyzer = type('',(object,),{'parse':spacy.load('ja_ginza')})
-            self.to_list = lambda tree: self.pos_change(analyze_cabocha(tree))
+            self.to_list = lambda tree: self.pos_change([t for s in tree.sents for t in analyze_cabocha(s)])
         else:
             import unidic2ud.cabocha as CaboCha
             self.analyzer = CaboCha.Parser(analyzertype)
